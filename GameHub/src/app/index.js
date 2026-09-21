@@ -54,6 +54,38 @@ return(
 //                bloco 2.1- seção de jogos
 //=====================================================
 
+    
+
+
+
+//====================================================
+//                bloco 2.2- os mais populares
+//=====================================================
+
+    <text style={styles.secaoTitulo}>Mais Populares</text>
+    {
+        /*Titulo da segunda seção, reaproveitando o mesmo estilo "sessão titulo"*/
+        <FlatList
+            data={populares}
+            //desta vez a fonte de dados é o array "populares"(top 5 por nota)
+            keyExtractor={(iten) => item.id}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            renderItem={({item})} => <GameCard jogo={item}/>}
+
+    
+//====================================================
+//                bloco 2.3- botão "ver todos jogos"
+//=====================================================
+    <pressable>
+        style={style.botao}
+        onPress={() => router.push("./jogos")}
+        //onPress: função executada quando o usuario toca no botão
+        //router.push("/jogos") navega para a rota "jogos"
+
+        <text style={styles.botao}> Ver todos os jogos </text>
+
+    </pressable>
 
 
 
@@ -64,3 +96,52 @@ return(
 );
 
 }
+
+//====================================================
+//                bloco 3- botão "ver todos jogos"
+//=====================================================
+
+
+const styles = StyleSheet.create({
+    container:{
+        flex: 1,
+        backgroundColor: cores.fundo,
+    },
+
+    conteudo:{
+        padding:20,
+        paddingButton: 40,
+    },
+
+    titulo: {
+        fontSize: 32,
+        fontWeight: "bold",
+        color: cores.textoPrincipal,
+    },
+    subtitulo: {
+        fontSize: 15,
+        marginTop: 4,
+        marginBottom:24,
+        color: cores.textoSecundario,
+    },
+
+    secaoTitulo:{
+        fontSize: 18,
+        fontWeight: "Bold",
+        color: cores.textoPrincipal,
+        marginTop: 8,
+        marginBottom: 12,
+    },
+    botão: {
+        backgroundColor: cores.roxo,
+        borderRadius: 12,
+        paddinfVertical: 14,
+        alingItems:"center",
+    },
+    textoBotao: {
+        color: cores.textoPrincipal,
+        fontSize: 16;
+        fontWeight: "bold",
+    }
+    
+})
